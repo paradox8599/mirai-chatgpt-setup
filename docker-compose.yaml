@@ -1,9 +1,7 @@
 version: "3.4"
 services:
   setup:
-    build:
-      context: .
-      dockerfile: _setup.Dockerfile
+    build: docker/setup
     volumes:
       - .:/app
 
@@ -38,9 +36,7 @@ services:
     #########################################
 
   mirai:
-    build:
-      context: .
-      dockerfile: _mirai.Dockerfile
+    build: docker/mirai
     restart: always
     environment:
       LANG: "C.UTF-8"
@@ -50,9 +46,7 @@ services:
       - mirai_network
 
   chatgpt:
-    build:
-      context: .
-      dockerfile: _chatgpt.Dockerfile
+    build: docker/chatgpt
     restart: always
     environment:
       LANG: "C.UTF-8"
